@@ -2,7 +2,7 @@ import os
 import logging
 from pathlib import Path
 
-project_name = "mlops-project"
+project_name = "mlops_project"
 
 list_of_files = [
     ".github/workflows/ci-cd.yaml",
