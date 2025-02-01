@@ -4,4 +4,6 @@ numpy
 matplotlib
 seaborn
 scikit-learn
+python-box
+pyYAML
 -e .
