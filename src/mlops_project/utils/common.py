@@ -1,6 +1,7 @@
 import os
 import yaml
 import sys
+import json
 from pathlib import Path
 from src.mlops_project.exception import MyException
 from src.mlops_project.logger import logging
@@ -39,3 +40,15 @@ def create_directories(path_to_directories: list, verbose=True):
         os.makedirs(path, exist_ok=True)
         if verbose:
             logging.info(f"created directory at: {path}")
+
+def save_json(path: Path, data: dict):
+    """save json data
+
+    Args:
+        path (Path): path to json file
+        data (dict): data to be saved in json file
+    """
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+
+    logging.info(f"json file saved at: {path}")
