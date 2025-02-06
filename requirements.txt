@@ -8,4 +8,5 @@ python-box
 pyYAML
 mlflow
 dagshub
+dvc
 -e .

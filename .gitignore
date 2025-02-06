@@ -175,3 +175,8 @@ artifacts/*
 
 # Mlruns
 mlruns/
+
+# DVC
+dvc.lock
+.dvc/
+.dvcignore
