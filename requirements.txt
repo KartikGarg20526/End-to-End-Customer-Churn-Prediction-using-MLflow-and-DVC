@@ -9,4 +9,6 @@ pyYAML
 mlflow
 dagshub
 dvc
+Flask
+Flask-Cors
 -e .
