@@ -1,0 +1,10 @@
+artifacts
+venv
+env
+__pycache__
+*.pyc
+logs
+research
+data
+README.md
+LICENSE

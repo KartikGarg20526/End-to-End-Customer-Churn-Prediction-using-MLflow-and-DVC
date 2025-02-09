@@ -11,4 +11,5 @@ dagshub
 dvc
 Flask
 Flask-Cors
+gunicorn
 -e .
