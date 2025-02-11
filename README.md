@@ -4,7 +4,7 @@
 This project implements an end-to-end machine learning pipeline for customer churn prediction using MLOps best practices. It leverages **MLflow** for experiment tracking, **DVC** for data versioning, and **CI/CD pipelines** for automated deployment on **Render**.
 
 ## 📊 Dataset  
-The dataset used for this project is obtained from Kaggle. It contains the following attributes:  
+The dataset used for this project is obtained from [Kaggle](https://www.kaggle.com/datasets/shubhammeshram579/bank-customer-churn-prediction). It contains the following attributes:  
 
 | Feature            | Description                                           |
 |--------------------|-------------------------------------------------------|
