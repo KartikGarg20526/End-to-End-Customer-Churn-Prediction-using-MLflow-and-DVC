@@ -14,22 +14,26 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v2  # Use v2
 
-      - name: Log in to Render Container Registry
-        run: echo "${{ secrets.RENDER_API_KEY }}" | docker login --username render --password-stdin registry.render.com
+      - name: Cache Docker layers
+        uses: actions/cache@v3 # Use v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-docker-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v4 # Use v4
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: registry.render.com/${{ secrets.RENDER_SERVICE_ID }}/customer-churn:latest
+          tags: registry.render.com/${{ secrets.RENDER_SERVICE_ID }}:latest # Use Service ID for tag
 
-      - name: Deploy on Render
-        run: |
-          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
-          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
-          -H "Accept: application/json" \
-          -d ''
+      - name: Deploy to Render
+        uses: render-oss/github-action@v1 # Use the dedicated Render action
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
